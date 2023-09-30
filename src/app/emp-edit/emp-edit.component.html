@@ -1,0 +1,139 @@
+<div mat-dialog-title>
+    <h1>Formulário cadastro de cartão</h1>
+</div>
+<form [formGroup]="empForm" (ngSubmit)="onFormSubmit()">
+    <div mat-dialog-content class="content">
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>id</mat-label>
+                <input matInput type="text" placeholder="id" formControlName="id">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>merchantId</mat-label>
+                <input matInput type="text" placeholder="merchantId" formControlName="merchantId">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>paymentNode</mat-label>
+                <input matInput placeholder="paymentNode" formControlName="paymentNode">
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>cnpjRoot</mat-label>
+                <input matInput type="text" placeholder="cnpjRoot" formControlName="cnpjRoot">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Date</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="date">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-radio-group aria-label="Selecione uma opção" formControlName="paymentType">
+                <mat-label><b>Pagamento</b></mat-label>
+                <mat-radio-button value="cartao">Crédito à vista</mat-radio-button>
+                <mat-radio-button value="debito">Cartão de débito</mat-radio-button>
+                <mat-radio-button value="pix">Pix</mat-radio-button>
+            </mat-radio-group>
+        </div>
+
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>cardBrand</mat-label>
+                <mat-select formControlName="cardBrand">
+                    <mat-option *ngFor="let val of cardBrand" [value]="val">{{val}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>authorizationCode</mat-label>
+                <input matInput placeholder="authorizationCode" formControlName="authorizationCode">
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>truncatedCardNumber</mat-label>
+                <input matInput placeholder="truncatedCardNumber" type="number" formControlName="truncatedCardNumber">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>grossAmount</mat-label>
+                <input matInput placeholder="grossAmount" type="number" formControlName="grossAmount">
+                <span matTextPrefix>$&nbsp;</span>
+                <span matTextSuffix>.00</span>
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>netAmount</mat-label>
+                <input matInput type="text" placeholder="netAmount" formControlName="netAmount">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>terminal</mat-label>
+                <input matInput type="text" placeholder="terminal" formControlName="terminal">
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>administrationFee</mat-label>
+                <input matInput type="text" placeholder="administrationFee" formControlName="administrationFee">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>channelCode</mat-label>
+                <input matInput type="text" placeholder="channelCode" formControlName="channelCode">
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>channel</mat-label>
+                <input matInput type="text" placeholder="channel" formControlName="channel">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>withdrawAmount</mat-label>
+                <input matInput type="text" placeholder="withdrawAmount" formControlName="withdrawAmount">
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>minimumMDRAmmount</mat-label>
+                <input matInput type="text" placeholder="minimumMDRAmmount" formControlName="minimumMDRAmmount">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>mdrTaxAmount</mat-label>
+                <input matInput type="text" placeholder="mdrTaxAmount" formControlName="mdrTaxAmount">
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>mdrFeeAmount</mat-label>
+                <input matInput type="text" placeholder="mdrFeeAmount" formControlName="mdrFeeAmount">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>status</mat-label>
+                <input matInput type="text" placeholder="status" formControlName="status">
+            </mat-form-field>
+        </div>
+
+    </div>
+    <div mat-dialog-actions class="action">
+        <button mat-raised-button type="button" [mat-dialog-close]="false">Cancelar</button>
+        <button mat-raised-button color="primary" type="submit">{{data ? 'Atualizar': 'Salvar'}} </button>
+    </div>
+</form>

@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Dashboard</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body class="mat-typography bg-white dark:box-decoration-slice dark:bg-gradient-to-r dark:from-indigo-600 dark:to-slate-950 dark:text-white">
+  <header>
+    <nav
+      class="h-16 border-b border-gray-100 border-opacity-60 bg-white bg-opacity-75 py-3 backdrop-blur dark:border-gray-800 dark:bg-dark dark:bg-opacity-75">
+      <div class="mx-auto px-6 md:max-w-3xl md:px-12 lg:max-w-7xl">
+        <div class="flex justify-between">
+          <div class="flex gap-3">
+            <div
+              class="group flex flex-col rounded-full border border-gray-100 bg-gray-50 transition duration-300 dark:border-gray-700 dark:bg-gray-800">
+              <button
+                class="switcher tansition group order-2 -mt-10 flex h-10 w-10 rounded-full opacity-0 duration-300 hover:bg-gray-100 group-hover:mt-0 group-hover:opacity-100 dark:order-1 dark:mt-0 dark:opacity-100 dark:hover:bg-gray-700">
+                <svg xmlns="http://www.w3.org/2000/svg"
+                  class="transistion m-auto h-5 w-5 fill-gray-500 duration-300 group-hover:rotate-180 dark:fill-gray-300 dark:group-hover:fill-yellow-400"
+                  viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd"
+                    d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                    clip-rule="evenodd" />
+                </svg>
+              </button>
+              <button
+                class="switcher darka:opacity-0 tansition group order-1 flex h-10 w-10 rounded-full opacity-100 duration-300 hover:bg-gray-100 dark:order-2 dark:-mt-10 dark:opacity-0 dark:hover:bg-gray-700 dark:group-hover:mt-0 dark:group-hover:opacity-100">
+                <svg xmlns="http://www.w3.org/2000/svg"
+                  class="transistion m-auto h-5 w-5 fill-gray-500 duration-300 group-hover:-rotate-90 group-hover:fill-cyan-900 dark:fill-gray-300 dark:group-hover:fill-gray-300"
+                  viewBox="0 0 20 20" fill="currentColor">
+                  <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <span class="font-medium dark:text-white">Tabela de prospects</span>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <app-root></app-root>
+
+  <footer
+    class="overflow-hidden relative pb-6 bg-gradient-to-b from-transparent to-gray-50 dark:border-gray-800 dark:border-opacity-100 dark:to-[#091316] lg:px-0">
+    <div class="relative mx-auto mt-32 flex max-w-3xl flex-col items-start justify-center px-6 sm:px-12 lg:max-w-7xl">
+      <div class="mt-12 grid w-full grid-cols-2 gap-4 pb-32 sm:grid-cols-4">
+        <div class="flex flex-col space-y-4">
+          <a class="text-gray-500 transition hover:text-gray-300" target="_blank" rel="noopener noreferrer"
+            href="https://github.com/crisgit">GitHub</a>
+          <a class="text-gray-500 transition hover:text-gray-300" target="_blank" rel="noopener noreferrer"
+            href="https://www.linkedin.com/in/cristina-d">LinkedIn</a>
+        </div>
+        <div class="flex flex-col space-y-4">
+          <a class="text-gray-500 transition hover:text-gray-300" target="_blank" rel="noopener noreferrer"
+            href="#">Blog</a>
+          <a class="text-gray-500 transition hover:text-gray-300" target="_blank" rel="noopener noreferrer"
+            href="#">Newsletter</a>
+        </div>
+        <div class="flex flex-col space-y-4">
+          <a class="text-gray-500 transition hover:text-gray-300" target="_blank" rel="noopener noreferrer"
+            href="#">Home</a>
+          <a class="text-gray-500 transition hover:text-gray-300" target="_blank" rel="noopener noreferrer"
+            href="#">Contato</a>
+        </div>
+      </div>
+
+      <div
+        class="w-full text-sm pt-6 border-gray-100 border-t flex flex-wrap gap-4 justify-center sm:justify-between dark:border-gray-700">
+        <span class="text-gray-500 dark:text-gray-600"> Ⓒ Cristina Dias - 2023 | Bootcamp Ada</span>
+        <span class="text-gray-500 dark:text-gray-600">Brasil - Rio de Janeiro</span>
+      </div>
+    </div>
+  </footer>
+  <script type="module" src="./main.js"></script>
+</body>
+
+</html>

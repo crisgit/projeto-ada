@@ -1,0 +1,246 @@
+<div class="main-body drop-shadow-xl rounded-lg">
+  <mat-toolbar class="bg-white dark:bg-dark dark:rounded-lg dark:box-decoration-slice dark:bg-gradient-to-r dark:from-indigo-600 dark:to-slate-950 dark:text-white">
+    <button mat-raised-button class="example-icon font-medium" color="primary" (click)="openAddEditEmpForm()"
+      aria-label="Example icon-button with share icon">
+      Add Cartao
+    </button>
+  </mat-toolbar>
+  
+  <mat-form-field class="dark:drop-shadow-xl">
+    <mat-label>Filtro</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Pesquisar dados do cartão" #input>
+  </mat-form-field>
+
+  <div class="table-container text-center">
+    <table mat-table [dataSource]="dataSource" matSort>
+
+      <!-- ID Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+        <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+      </ng-container>
+
+      <!-- merchantId -->
+      <ng-container matColumnDef="merchantId">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> merchantId </th>
+        <td mat-cell *matCellDef="let row"> {{row.merchantId}} </td>
+      </ng-container>
+
+      <!-- paymentNode -->
+      <ng-container matColumnDef="paymentNode">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> paymentNode </th>
+        <td mat-cell *matCellDef="let row"> {{row.paymentNode}}</td>
+      </ng-container>
+
+      <!-- cnpjRoot -->
+      <ng-container matColumnDef="cnpjRoot">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> cnpjRoot </th>
+        <td mat-cell *matCellDef="let row"> {{row.cnpjRoot}} </td>
+      </ng-container>
+
+      <!-- date -->
+      <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> date </th>
+        <td mat-cell *matCellDef="let row"> {{row.date | date}} </td>
+      </ng-container>
+
+      <!-- Progress Column -->
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+        <td mat-cell *matCellDef="let row">
+          <button mat-icon-button color="primary" (click)="openEditForm(row)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="deleteEmp(row.id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+      <!-- Row shown when there is no matching data. -->
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+      </tr>
+    </table>
+  </div>
+  <br>
+
+  <!-- Tabela 2 -->
+  <div class="table-container text-center">
+    <table mat-table [dataSource]="dataSource" matSort>
+      <br>
+      <!-- paymentType -->
+      <ng-container matColumnDef="paymentType">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>paymentType</th>
+        <td mat-cell *matCellDef="let row"> {{row.paymentType}} </td>
+      </ng-container>
+
+      <!-- cardBrand -->
+      <ng-container matColumnDef="cardBrand">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> cardBrand </th>
+        <td mat-cell *matCellDef="let row"> {{row.cardBrand}} </td>
+      </ng-container>
+
+      <!-- PrauthorizationCode -->
+      <ng-container matColumnDef="authorizationCode">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> authorizationCode </th>
+        <td mat-cell *matCellDef="let row"> {{row.authorizationCode}} </td>
+      </ng-container>
+
+      <!-- truncatedCardNumber -->
+      <ng-container matColumnDef="truncatedCardNumber">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> truncatedCardNumber </th>
+        <td mat-cell *matCellDef="let row"> {{row.truncatedCardNumber}} </td>
+      </ng-container>
+
+      <!-- grossAmount -->
+      <ng-container matColumnDef="grossAmount">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> grossAmount </th>
+        <td mat-cell *matCellDef="let row"> {{row.grossAmount | currency:'$'}} </td>
+      </ng-container>
+
+      <!-- Progress Column -->
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+        <td mat-cell *matCellDef="let row">
+          <button mat-icon-button color="primary" (click)="openEditForm(row)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="deleteEmp(row.id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns2;"></tr>
+
+      <!-- Row shown when there is no matching data. -->
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+      </tr>
+    </table>
+  </div>
+  <br>
+  <div class="table-container text-center">
+    <!-- Tabela 3 -->
+    <table mat-table [dataSource]="dataSource" matSort>
+      <br>
+      <!-- netAmount -->
+      <ng-container matColumnDef="netAmount">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> netAmount </th>
+        <td mat-cell *matCellDef="let row"> {{row.netAmount | currency:'$'}} </td>
+      </ng-container>
+
+      <!-- terminal -->
+      <ng-container matColumnDef="terminal">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> terminal </th>
+        <td mat-cell *matCellDef="let row"> {{row.terminal}} </td>
+      </ng-container>
+
+      <!-- administrationFee -->
+      <ng-container matColumnDef="administrationFee">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> administrationFee </th>
+        <td mat-cell *matCellDef="let row"> {{row.administrationFee}} </td>
+      </ng-container>
+
+      <!-- channelCode -->
+      <ng-container matColumnDef="channelCode">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> channelCode </th>
+        <td mat-cell *matCellDef="let row"> {{row.channelCode}} </td>
+      </ng-container>
+
+      <!-- channel -->
+      <ng-container matColumnDef="channel">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> channel </th>
+        <td mat-cell *matCellDef="let row"> {{row.channel}} </td>
+      </ng-container>
+
+      <!-- Progress Column -->
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+        <td mat-cell *matCellDef="let row">
+          <button mat-icon-button color="primary" (click)="openEditForm(row)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="deleteEmp(row.id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns3"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns3;"></tr>
+
+      <!-- Row shown when there is no matching data. -->
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+      </tr>
+    </table>
+  </div>
+  <br>
+  <div class="table-container text-center">
+    <!-- Tabela 4 -->
+    <table mat-table [dataSource]="dataSource" matSort>
+      <br>
+      <!-- withdrawAmount -->
+      <ng-container matColumnDef="withdrawAmount">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> withdrawAmount </th>
+        <td mat-cell *matCellDef="let row"> {{row.withdrawAmount}} </td>
+      </ng-container>
+
+      <!-- minimumMDRAmmount -->
+      <ng-container matColumnDef="minimumMDRAmmount">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> minimumMDRAmmount </th>
+        <td mat-cell *matCellDef="let row"> {{row.minimumMDRAmmount}} </td>
+      </ng-container>
+
+      <!-- mdrTaxAmount -->
+      <ng-container matColumnDef="mdrTaxAmount">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> mdrTaxAmount </th>
+        <td mat-cell *matCellDef="let row"> {{row.mdrTaxAmount}} </td>
+      </ng-container>
+
+      <!-- mdrFeeAmount -->
+      <ng-container matColumnDef="mdrFeeAmount">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> mdrFeeAmount </th>
+        <td mat-cell *matCellDef="let row"> {{row.mdrFeeAmount}} </td>
+      </ng-container>
+
+      <!-- status -->
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> status </th>
+        <td mat-cell *matCellDef="let row"> {{row.status}} </td>
+      </ng-container>
+
+      <!-- Progress Column -->
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+        <td mat-cell *matCellDef="let row">
+          <button mat-icon-button color="primary" (click)="openEditForm(row)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="deleteEmp(row.id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns4"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns4;"></tr>
+
+      <!-- Row shown when there is no matching data. -->
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+      </tr>
+    </table>
+
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+  </div>
+</div>
+
+<router-outlet></router-outlet>
